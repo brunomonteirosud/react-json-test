@@ -1,5 +1,6 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
+import { ProductInfo } from "./interfaces";
 
 const Card = styled.div`
     display: flex;
@@ -56,7 +57,7 @@ const TagExclusive = styled.span`
     margin: 5px 0;
 `;
 
-const ProductInfo = styled.div`
+const ProductNamePrice = styled.div`
     flex: 1;
     margin-top: 10px;
     display: flex;
@@ -80,14 +81,7 @@ const Price = styled.div`
 `;
 
 interface Props {
-    productInfo: {
-        size: string[];
-        productImage: string;
-        productName: string;
-        price: string;
-        isSale: boolean;
-        isExclusive: boolean;
-    };
+    productInfo: ProductInfo;
 };
 
 const ProductCard = (props: Props) => {
@@ -101,10 +95,10 @@ const ProductCard = (props: Props) => {
                     {props.productInfo.isSale ? <TagSale>Sale</TagSale> : ""}
                     {props.productInfo.isExclusive ? <TagExclusive>Exclusive</TagExclusive> : ""}
                 </Tag>
-                <ProductInfo>
+                <ProductNamePrice>
                     <Name>{props.productInfo.productName}</Name>
                     <Price>{props.productInfo.price}</Price>
-                </ProductInfo>
+                </ProductNamePrice>
             </CardWrapper>
         </Card>
     )
