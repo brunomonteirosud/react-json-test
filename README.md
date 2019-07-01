@@ -20,3 +20,8 @@ A responsive HTML test page (made in React) populated with JSON data.
 - Babel
 - Webpack
 - ESLint
+
+## TODO
+- Create a build with a bundle that includes images, for easier deploy
+- Include Jest and react-testing-library for Unit Tests
+- Generate Test Coverage Report
