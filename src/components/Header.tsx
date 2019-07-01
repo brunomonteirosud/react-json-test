@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Select from "./Select";
 
 const HeaderBar = styled.div`
     display: flex;
@@ -23,14 +24,17 @@ const SelectContainer = styled.div`
     max-width: 100px;
 `;
 
-const Header = () => {
+interface Props {
+    filterOptions: string[];
+    setFilter: (filter: string) => void;
+}
+
+const Header = (props: Props) => {
     return (
         <HeaderBar>
             <H1>Women's Tops</H1>
             <SelectContainer>
-                <select>
-                    <option>Filter by size</option>
-                </select>
+                <Select setFilter={props.setFilter} options={props.filterOptions} />
             </SelectContainer>
         </HeaderBar>
     )

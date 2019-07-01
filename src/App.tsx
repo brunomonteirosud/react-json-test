@@ -14,10 +14,24 @@ const Container = styled.div`
 `;
 
 const App = () => {
+    const [sizeFilterOptions, setSizeFilterOptions] = React.useState([]);
+    const [selectedFilter, setSelectedFilter] = React.useState("all");
+
+    const handleSetFilter = (options: string[]) => {
+        setSizeFilterOptions(options);
+    }
+
     return (
         <Container>
-            <Header />
-            <ProductDisplay />
+            <Header
+                filterOptions={sizeFilterOptions}
+                setFilter={setSelectedFilter}
+            />
+            <ProductDisplay
+                url="https://api.jsonbin.io/b/5cae9a54fb42337645ebcad3"
+                currentFilter={selectedFilter}
+                setFilter={handleSetFilter}
+            />
         </Container>
     )
 }
