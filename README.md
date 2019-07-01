@@ -7,10 +7,16 @@ A responsive HTML test page (made in React) populated with JSON data.
 - Filter options
 
 ## How to run the project
-TODO
+- Download NPM via the NodeJS website: https://nodejs.org/en/
+- Clone the `master` branch of this project
+- Run `npm install` inside the project folder
+- Run `npm run start` inside the project folder
 
 ## Technology stack
-TODO
-
-## Clean Code Principles applied
-TODO
+- ReactJS (with hooks)
+- TypeScript
+- StyledComponents
+- Axios
+- Babel
+- Webpack
+- ESLint
