@@ -20,37 +20,40 @@ const Card = styled.div`
 
 const CardWrapper = styled.div`
     display: flex;
-    position: relative;
     flex-direction: column;
     padding: 10px;
     border: 1px solid #ccc;
-    height: 374px;
-    width: 100%;
 `;
 
-const pulse = keyframes`
-    0% {
-        background-color: #ccc;
-    }
-    50% {
-        background-color: #e8e8e8;
-    }
-    100% {
-        background-color: #ccc;
-    }
+const Figure = styled.figure`
+    flex: 1;
+    display: flex;
+    justify-content: center;
 `;
 
-const Image = styled.div`
-    flex: 10;
-    width: 100%;
-    animation: ${pulse} 1.6s infinite ease-in-out;
+const Image = styled.img`
+    max-width: 100%;
+    height: auto;
 `;
 
 const Tag = styled.div`
     flex: 1;
-  margin-top: 10px;
-  width: 40%;
-  animation: ${pulse} 1.6s infinite ease-in-out;
+    color: white;
+    font-size: 12px;
+`;
+
+const TagSale = styled.span`
+    display: inline-block;
+    background: #ce0303;
+    padding: 10px;
+    margin: 5px 0;
+`;
+
+const TagExclusive = styled.span`
+    display: inline-block;
+    background: #13940b;
+    padding: 10px;
+    margin: 5px 0;
 `;
 
 const ProductInfo = styled.div`
@@ -61,24 +64,46 @@ const ProductInfo = styled.div`
 
 const Name = styled.div`
     flex: 2;
-    margin-right: 50px;
-    animation: ${pulse} 1.6s infinite ease-in-out;
+    font-size: 14px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: flex-end;
 `;
 
 const Price = styled.div`
     flex: 1;
-    animation: ${pulse} 1.6s infinite ease-in-out;
+    font-size: 22px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: flex-end;
+    justify-content: flex-end;
 `;
 
-const ProductCard = () => {
+interface Props {
+    productInfo: {
+        size: string[];
+        productImage: string;
+        productName: string;
+        price: string;
+        isSale: boolean;
+        isExclusive: boolean;
+    };
+};
+
+const ProductCard = (props: Props) => {
     return (
         <Card>
             <CardWrapper>
-                <Image />
-                <Tag />
+                <Figure>
+                    <Image src={`/src/images/products/${props.productInfo.productImage}`} />
+                </Figure>
+                <Tag>
+                    {props.productInfo.isSale ? <TagSale>Sale</TagSale> : ""}
+                    {props.productInfo.isExclusive ? <TagExclusive>Exclusive</TagExclusive> : ""}
+                </Tag>
                 <ProductInfo>
-                    <Name />
-                    <Price />
+                    <Name>{props.productInfo.productName}</Name>
+                    <Price>{props.productInfo.price}</Price>
                 </ProductInfo>
             </CardWrapper>
         </Card>
